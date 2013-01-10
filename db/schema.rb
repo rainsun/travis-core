@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107165057) do
+ActiveRecord::Schema.define(:version => 20130110135300) do
 
   create_table "artifact_parts", :force => true do |t|
     t.integer  "artifact_id"
@@ -227,7 +227,6 @@ ActiveRecord::Schema.define(:version => 20130107165057) do
 
   create_table "urls", :force => true do |t|
     t.string   "url"
-    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
