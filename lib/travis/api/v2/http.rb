@@ -11,6 +11,7 @@ module Travis
         autoload :Hooks,        'travis/api/v2/http/hooks'
         autoload :Job,          'travis/api/v2/http/job'
         autoload :Jobs,         'travis/api/v2/http/jobs'
+        autoload :Links,        'travis/api/v2/http/links'
         autoload :Log,          'travis/api/v2/http/log'
         autoload :Permissions,  'travis/api/v2/http/permissions'
         autoload :Repositories, 'travis/api/v2/http/repositories'

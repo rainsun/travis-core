@@ -16,6 +16,7 @@ module Travis
             let(:commit)        { stub_commit       }
             let(:build)         { stub_build        }
             let(:test)          { stub_test         }
+            let(:link)          { stub_link         }
             let(:log)           { stub_log          }
             let(:event)         { stub_event        }
             let(:worker)        { stub_worker       }
@@ -163,6 +164,17 @@ module Travis
         source = stub_build(:matrix => [test])
         test.define_singleton_method(:source) { source }
         test
+      end
+
+      def stub_link(attributes = {})
+        Stubs.stub 'link', attributes.reverse_merge(
+          class: Stubs.stub('class', name: 'Link'),
+          id: 1,
+          job_id: test.id,
+          source_name: "Travis CI",
+          description: "The job passed.",
+          url: "https://travis-ci.org/travis-ci/travis-ci/12345",
+        )
       end
 
       def stub_log(attributes = {})
