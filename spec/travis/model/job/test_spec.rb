@@ -89,6 +89,13 @@ describe Job::Test do
       xit 'clears log parts' do
       end
 
+      it "destroy links" do
+        job.links << Factory(:link)
+        job.reload
+        job.reset!
+        job.reload.links.should be_empty
+      end
+
       it 'triggers a :created event' do
         job.expects(:notify).with(:reset)
         job.reset

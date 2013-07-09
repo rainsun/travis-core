@@ -47,6 +47,7 @@ class Job
       else
         build_log
       end
+      links.destroy_all
     end
 
     def cancelable?
