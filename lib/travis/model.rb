@@ -14,6 +14,7 @@ module Travis
     autoload :EncryptedColumn, 'travis/model/encrypted_column'
     autoload :EnvHelpers,      'travis/model/env_helpers'
     autoload :Job,             'travis/model/job'
+    autoload :Link,            'travis/model/link'
     autoload :Log,             'travis/model/log'
     autoload :Membership,      'travis/model/membership'
     autoload :Organization,    'travis/model/organization'

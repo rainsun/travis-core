@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705123456) do
+ActiveRecord::Schema.define(:version => 20130709185200) do
 
   create_table "broadcasts", :force => true do |t|
     t.integer  "recipient_id"
@@ -119,6 +119,15 @@ ActiveRecord::Schema.define(:version => 20130705123456) do
   add_index "jobs", ["repository_id"], :name => "index_jobs_on_repository_id"
   add_index "jobs", ["state", "owner_id", "owner_type"], :name => "index_jobs_on_state_owner_type_owner_id"
   add_index "jobs", ["type", "source_id", "source_type"], :name => "index_jobs_on_type_and_source_id_and_source_type"
+
+  create_table "links", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "url"
+    t.string   "source_name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "log_parts", :force => true do |t|
     t.integer  "log_id",     :null => false
