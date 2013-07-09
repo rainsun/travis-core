@@ -4,6 +4,7 @@ class Metadata < ActiveRecord::Base
   include Travis::Event
 
   belongs_to :job
+  belongs_to :metadata_provider
 
   attr_accessible :source_name, :description, :url, :job_id
 

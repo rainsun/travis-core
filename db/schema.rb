@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709185200) do
+ActiveRecord::Schema.define(:version => 20130710000745) do
 
   create_table "broadcasts", :force => true do |t|
     t.integer  "recipient_id"
@@ -156,8 +156,17 @@ ActiveRecord::Schema.define(:version => 20130709185200) do
     t.string   "url"
     t.string   "source_name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "metadata_provider_id", :null => false
+  end
+
+  create_table "metadata_providers", :force => true do |t|
+    t.string   "name"
+    t.string   "api_username"
+    t.string   "api_key"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "organizations", :force => true do |t|

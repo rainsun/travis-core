@@ -123,5 +123,11 @@ FactoryGirl.define do
     description "Job passed"
     job { Factory(:test) }
   end
+
+  factory :metadata_provider do
+    name "Travis CI"
+    api_username "travis-ci"
+    api_key "0123456789abcdef"
+  end
 end
 
