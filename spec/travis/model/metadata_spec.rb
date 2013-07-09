@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe Link do
+describe Metadata do
   include Support::ActiveRecord
 end

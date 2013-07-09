@@ -1,6 +1,6 @@
-class CreateLinks < ActiveRecord::Migration
+class CreateMetadata < ActiveRecord::Migration
   def change
-    create_table :links do |t|
+    create_table :metadata do |t|
       t.integer :job_id
       t.string :url
       t.string :source_name

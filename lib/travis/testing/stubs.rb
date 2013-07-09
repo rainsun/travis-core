@@ -16,8 +16,8 @@ module Travis
             let(:commit)        { stub_commit       }
             let(:build)         { stub_build        }
             let(:test)          { stub_test         }
-            let(:link)          { stub_link         }
             let(:log)           { stub_log          }
+            let(:metadata)      { stub_metadata     }
             let(:event)         { stub_event        }
             let(:worker)        { stub_worker       }
             let(:user)          { stub_user         }
@@ -166,17 +166,6 @@ module Travis
         test
       end
 
-      def stub_link(attributes = {})
-        Stubs.stub 'link', attributes.reverse_merge(
-          class: Stubs.stub('class', name: 'Link'),
-          id: 1,
-          job_id: test.id,
-          source_name: "Travis CI",
-          description: "The job passed.",
-          url: "https://travis-ci.org/travis-ci/travis-ci/12345",
-        )
-      end
-
       def stub_log(attributes = {})
         Stubs.stub 'log', attributes.reverse_merge(
           class: Stubs.stub('class', name: 'Log'),
@@ -193,6 +182,17 @@ module Travis
           content: 'the test log',
           number: 1,
           final: false
+        )
+      end
+
+      def stub_metadata(attributes = {})
+        Stubs.stub 'metadata', attributes.reverse_merge(
+          class: Stubs.stub('class', name: 'Metadata'),
+          id: 1,
+          job_id: test.id,
+          source_name: "Travis CI",
+          description: "The job passed.",
+          url: "https://travis-ci.org/travis-ci/travis-ci/12345",
         )
       end
 

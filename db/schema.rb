@@ -120,15 +120,6 @@ ActiveRecord::Schema.define(:version => 20130709185200) do
   add_index "jobs", ["state", "owner_id", "owner_type"], :name => "index_jobs_on_state_owner_type_owner_id"
   add_index "jobs", ["type", "source_id", "source_type"], :name => "index_jobs_on_type_and_source_id_and_source_type"
 
-  create_table "links", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "url"
-    t.string   "source_name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "log_parts", :force => true do |t|
     t.integer  "log_id",     :null => false
     t.text     "content"
@@ -158,6 +149,15 @@ ActiveRecord::Schema.define(:version => 20130709185200) do
   create_table "memberships", :force => true do |t|
     t.integer "organization_id"
     t.integer "user_id"
+  end
+
+  create_table "metadata", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "url"
+    t.string   "source_name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "organizations", :force => true do |t|

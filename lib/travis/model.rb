@@ -4,6 +4,10 @@
 #   https://github.com/travis-ci/travis-hub/blob/master/lib/travis/hub/cli.rb#L15
 require 'core_ext/active_record/base'
 
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.uncountable "metadata"
+end
+
 module Travis
   module Model
     autoload :Account,         'travis/model/account'
@@ -14,9 +18,9 @@ module Travis
     autoload :EncryptedColumn, 'travis/model/encrypted_column'
     autoload :EnvHelpers,      'travis/model/env_helpers'
     autoload :Job,             'travis/model/job'
-    autoload :Link,            'travis/model/link'
     autoload :Log,             'travis/model/log'
     autoload :Membership,      'travis/model/membership'
+    autoload :Metadata,        'travis/model/metadata'
     autoload :Organization,    'travis/model/organization'
     autoload :Permission,      'travis/model/permission'
     autoload :Repository,      'travis/model/repository'
