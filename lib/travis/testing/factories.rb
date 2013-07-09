@@ -122,6 +122,7 @@ FactoryGirl.define do
     url "https://travis-ci.org/travis-ci/travis-ci/jobs/12345"
     description "Job passed"
     job { Factory(:test) }
+    metadata_provider { Factory(:metadata_provider) }
   end
 
   factory :metadata_provider do
