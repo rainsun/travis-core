@@ -116,5 +116,11 @@ FactoryGirl.define do
     started_at  { Time.now.utc }
     finished_at { Time.now.utc }
   end
+
+  factory :link do
+    source_name "Travis CI"
+    url "https://travis-ci.org/travis-ci/travis-ci/jobs/12345"
+    description "Job passed"
+  end
 end
 

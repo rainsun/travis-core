@@ -11,6 +11,7 @@ module Travis
     autoload :FindHooks,           'travis/services/find_hooks'
     autoload :FindJob,             'travis/services/find_job'
     autoload :FindJobs,            'travis/services/find_jobs'
+    autoload :FindLinks,           'travis/services/find_links'
     autoload :FindLog,             'travis/services/find_log'
     autoload :FindRepo,            'travis/services/find_repo'
     autoload :FindRepos,           'travis/services/find_repos'
