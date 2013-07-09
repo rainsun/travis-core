@@ -9,7 +9,8 @@ module Travis
         EVENTS = [
           /^build:(created|started|finished)/,
           /^job:test:(created|started|log|finished)/,
-          /^worker:(added|updated|removed)/
+          /^worker:(added|updated|removed)/,
+          /^metadata:(created|updated)/,
         ]
 
         attr_reader :channels

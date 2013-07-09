@@ -50,6 +50,16 @@ describe Travis::Addons::Pusher::EventHandler do
       subject.expects(:notify)
       Travis::Event.dispatch('worker:added', worker)
     end
+
+    it "metadata:created" do
+      subject.expects(:notify)
+      Travis::Event.dispatch("metadata:created", metadata)
+    end
+
+    it "metadata:updated" do
+      subject.expects(:notify)
+      Travis::Event.dispatch("metadata:updated", metadata)
+    end
   end
 
   # describe 'instrumentation' do
