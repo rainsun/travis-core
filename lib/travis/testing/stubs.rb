@@ -10,21 +10,22 @@ module Travis
 
         def included(base)
           base.send(:instance_eval) do
-            let(:repository)    { stub_repo         }
-            let(:repo)          { stub_repo         }
-            let(:request)       { stub_request      }
-            let(:commit)        { stub_commit       }
-            let(:build)         { stub_build        }
-            let(:test)          { stub_test         }
-            let(:log)           { stub_log          }
-            let(:metadata)      { stub_metadata     }
-            let(:event)         { stub_event        }
-            let(:worker)        { stub_worker       }
-            let(:user)          { stub_user         }
-            let(:org)           { stub_org          }
-            let(:url)           { stub_url          }
-            let(:broadcast)     { stub_broadcast    }
-            let(:travis_token)  { stub_travis_token }
+            let(:repository)        { stub_repo              }
+            let(:repo)              { stub_repo              }
+            let(:request)           { stub_request           }
+            let(:commit)            { stub_commit            }
+            let(:build)             { stub_build             }
+            let(:test)              { stub_test              }
+            let(:log)               { stub_log               }
+            let(:metadata)          { stub_metadata          }
+            let(:metadata_provider) { stub_metadata_provider }
+            let(:event)             { stub_event             }
+            let(:worker)            { stub_worker            }
+            let(:user)              { stub_user              }
+            let(:org)               { stub_org               }
+            let(:url)               { stub_url               }
+            let(:broadcast)         { stub_broadcast         }
+            let(:travis_token)      { stub_travis_token      }
           end
         end
       end
@@ -190,9 +191,20 @@ module Travis
           class: Stubs.stub('class', name: 'Metadata'),
           id: 1,
           job_id: test.id,
+          metadata_provider_id: metadata_provider.id,
           source_name: "Travis CI",
           description: "The job passed.",
           url: "https://travis-ci.org/travis-ci/travis-ci/12345",
+        )
+      end
+
+      def stub_metadata_provider(attributes = {})
+        Stubs.stub 'metadata_provider', attributes.reverse_merge(
+          class: Stubs.stub('class', name: 'MetadataProvider'),
+          id: 1,
+          name: "Travis CI",
+          api_username: "travis-ci",
+          api_key: "0123456789abcdef",
         )
       end
 

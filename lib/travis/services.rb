@@ -28,6 +28,7 @@ module Travis
     autoload :UpdateHook,          'travis/services/update_hook'
     autoload :UpdateJob,           'travis/services/update_job'
     autoload :UpdateLog,           'travis/services/update_log'
+    autoload :UpdateMetadata,      'travis/services/update_metadata'
     autoload :UpdateUser,          'travis/services/update_user'
     autoload :UpdateWorkers,       'travis/services/update_workers'
 
