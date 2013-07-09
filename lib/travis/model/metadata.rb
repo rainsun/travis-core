@@ -7,14 +7,10 @@ class Metadata < ActiveRecord::Base
 
   attr_accessible :source_name, :description, :url, :job_id
 
+  validates :job_id, presence: true
+  validates :source_name, presence: true, uniqueness: true
+  validates :description, presence: true
+
   after_create { notify(:create) }
   after_update { notify(:update) }
-
-  after_commit(on: :create) do
-    notify(:create)
-  end
-
-  after_commit(on: :update) do
-    notify(:update)
-  end
 end
