@@ -6,10 +6,9 @@ class Metadata < ActiveRecord::Base
   belongs_to :job
   belongs_to :metadata_provider
 
-  attr_accessible :source_name, :description, :url, :job_id
+  attr_accessible :description, :url, :job_id
 
   validates :job_id, presence: true
-  validates :source_name, presence: true, uniqueness: true
   validates :description, presence: true
 
   after_create { notify(:create) }

@@ -118,7 +118,6 @@ FactoryGirl.define do
   end
 
   factory :metadata do
-    source_name "Travis CI"
     url "https://travis-ci.org/travis-ci/travis-ci/jobs/12345"
     description "Job passed"
     job { Factory(:test) }

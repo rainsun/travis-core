@@ -9,7 +9,6 @@ describe Travis::Api::V2::Http::Metadata do
     data["metadata"].first.should eq({
       "id" => metadata.id,
       "job_id" => test.id,
-      "source_name" => metadata.source_name,
       "description" => metadata.description,
       "url" => metadata.url,
     })

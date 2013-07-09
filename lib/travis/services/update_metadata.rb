@@ -4,7 +4,7 @@ module Travis
       register :update_metadata
 
       def run
-        metadata.update_attributes!(attributes.merge(source_name: metadata_provider.name))
+        metadata.update_attributes!(attributes)
 
         metadata
       end

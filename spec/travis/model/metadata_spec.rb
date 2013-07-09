@@ -15,7 +15,7 @@ describe Metadata do
   describe "update" do
     it "notifies observers" do
       metadata.save
-      metadata.source_name = "Travis-CI"
+      metadata.description = "Foobarbaz"
       Travis::Event.expects(:dispatch).with("metadata:updated", metadata)
       metadata.save
     end

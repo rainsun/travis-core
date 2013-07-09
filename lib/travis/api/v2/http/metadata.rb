@@ -21,7 +21,6 @@ module Travis
             {
               "id" => metadata.id,
               "job_id" => metadata.job_id,
-              "source_name" => metadata.source_name,
               "description" => metadata.description,
               "url" => metadata.url,
             }

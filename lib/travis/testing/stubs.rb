@@ -192,7 +192,6 @@ module Travis
           id: 1,
           job_id: test.id,
           metadata_provider_id: metadata_provider.id,
-          source_name: "Travis CI",
           description: "The job passed.",
           url: "https://travis-ci.org/travis-ci/travis-ci/12345",
         )
