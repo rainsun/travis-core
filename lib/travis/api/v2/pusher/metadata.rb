@@ -8,7 +8,7 @@ module Travis
 
           include Formats
 
-          def initialize(metadata)
+          def initialize(metadata, options = {})
             @metadata = metadata
           end
 
