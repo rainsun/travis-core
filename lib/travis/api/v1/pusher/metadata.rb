@@ -14,7 +14,7 @@ module Travis
 
           def data
             {
-              "metadata" => Http::Metadata.new([@metadata]).data["metadata"].first,
+              "metadata" => V2::Http::Metadata.new([@metadata]).data["metadata"].first,
             }
           end
         end
