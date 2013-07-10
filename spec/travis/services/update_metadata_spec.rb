@@ -15,10 +15,14 @@ describe Travis::Services::UpdateMetadata do
       key: metadata_provider.api_key,
       job_id: job.id,
       description: "Foo bar baz",
+      image_url: "https://example.com/image.png",
+      image_alt: "An image",
     }
 
     metadata = service.run
     metadata.description.should eq(params[:description])
+    metadata.image_url.should eq(params[:image_url])
+    metadata.image_alt.should eq(params[:image_alt])
   end
 
   it "updates an existing metadata if one exists" do

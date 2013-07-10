@@ -11,6 +11,7 @@ describe Travis::Api::V2::Pusher::Metadata::Updated do
       "job_id" => metadata.job_id,
       "description" => metadata.description,
       "url" => metadata.url,
+      "image" => nil,
     }
   end
 end

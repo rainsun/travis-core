@@ -6,7 +6,7 @@ class Metadata < ActiveRecord::Base
   belongs_to :job
   belongs_to :metadata_provider
 
-  attr_accessible :description, :url, :job_id
+  attr_accessible :description, :url, :job_id, :image_url, :image_alt
 
   validates :job_id, presence: true
   validates :description, presence: true

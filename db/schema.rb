@@ -155,6 +155,8 @@ ActiveRecord::Schema.define(:version => 20130710000745) do
     t.integer  "job_id"
     t.string   "url"
     t.text     "description"
+    t.string   "image_url"
+    t.string   "image_alt"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.integer  "metadata_provider_id", :null => false

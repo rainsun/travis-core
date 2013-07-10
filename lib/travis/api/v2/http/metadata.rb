@@ -23,7 +23,12 @@ module Travis
               "job_id" => metadata.job_id,
               "description" => metadata.description,
               "url" => metadata.url,
+              "image" => build_image(metadata),
             }
+          end
+
+          def build_image(metadata)
+            { "url" => metadata.image_url, "alt" => metadata.image_alt } if metadata.image_url
           end
         end
       end

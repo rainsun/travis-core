@@ -4,6 +4,8 @@ class CreateMetadata < ActiveRecord::Migration
       t.integer :job_id
       t.string :url
       t.text :description
+      t.string :image_url
+      t.string :image_alt
 
       t.timestamps
     end
