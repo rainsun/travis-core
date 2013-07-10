@@ -1,10 +1,10 @@
 module Travis
   module Api
-    module V2
+    module V1
       module Pusher
         class Metadata
-          autoload :Created, "travis/api/v2/pusher/metadata/created"
-          autoload :Updated, "travis/api/v2/pusher/metadata/updated"
+          autoload :Created, "travis/api/v1/pusher/metadata/created"
+          autoload :Updated, "travis/api/v1/pusher/metadata/updated"
 
           include Formats
 
