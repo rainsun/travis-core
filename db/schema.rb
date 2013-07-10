@@ -152,9 +152,9 @@ ActiveRecord::Schema.define(:version => 20130710000745) do
   end
 
   create_table "metadata", :force => true do |t|
-    t.integer  "job_id"
+    t.integer  "job_id",               :null => false
     t.string   "url"
-    t.text     "description"
+    t.text     "description",          :null => false
     t.string   "image_url"
     t.string   "image_alt"
     t.datetime "created_at",           :null => false
