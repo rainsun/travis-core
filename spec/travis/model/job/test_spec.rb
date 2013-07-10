@@ -89,11 +89,11 @@ describe Job::Test do
       xit 'clears log parts' do
       end
 
-      it "destroy metadata" do
-        job.metadata << Factory(:metadata)
+      it "destroy annotations" do
+        job.annotations << Factory(:annotation)
         job.reload
         job.reset!
-        job.reload.metadata.should be_empty
+        job.reload.annotations.should be_empty
       end
 
       it 'triggers a :created event' do

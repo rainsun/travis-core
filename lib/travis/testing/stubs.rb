@@ -10,22 +10,22 @@ module Travis
 
         def included(base)
           base.send(:instance_eval) do
-            let(:repository)        { stub_repo              }
-            let(:repo)              { stub_repo              }
-            let(:request)           { stub_request           }
-            let(:commit)            { stub_commit            }
-            let(:build)             { stub_build             }
-            let(:test)              { stub_test              }
-            let(:log)               { stub_log               }
-            let(:metadata)          { stub_metadata          }
-            let(:metadata_provider) { stub_metadata_provider }
-            let(:event)             { stub_event             }
-            let(:worker)            { stub_worker            }
-            let(:user)              { stub_user              }
-            let(:org)               { stub_org               }
-            let(:url)               { stub_url               }
-            let(:broadcast)         { stub_broadcast         }
-            let(:travis_token)      { stub_travis_token      }
+            let(:repository)          { stub_repo                }
+            let(:repo)                { stub_repo                }
+            let(:request)             { stub_request             }
+            let(:commit)              { stub_commit              }
+            let(:build)               { stub_build               }
+            let(:test)                { stub_test                }
+            let(:log)                 { stub_log                 }
+            let(:annotation)          { stub_annotation          }
+            let(:annotation_provider) { stub_annotation_provider }
+            let(:event)               { stub_event               }
+            let(:worker)              { stub_worker              }
+            let(:user)                { stub_user                }
+            let(:org)                 { stub_org                 }
+            let(:url)                 { stub_url                 }
+            let(:broadcast)           { stub_broadcast           }
+            let(:travis_token)        { stub_travis_token        }
           end
         end
       end
@@ -144,7 +144,7 @@ module Travis
           commit: commit,
           log: log,
           log_id: log.id,
-          metadata: [stub_metadata(job_id: 1)],
+          annotations: [stub_annotation(job_id: 1)],
           number: '2.1',
           config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
           decrypted_config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
@@ -187,13 +187,13 @@ module Travis
         )
       end
 
-      def stub_metadata(attributes = {})
-        Stubs.stub 'metadata', attributes.reverse_merge(
-          class: Stubs.stub('class', name: 'Metadata'),
+      def stub_annotation(attributes = {})
+        Stubs.stub 'annotation', attributes.reverse_merge(
+          class: Stubs.stub('class', name: 'Annotation'),
           id: 1,
           job_id: attributes[:job_id] || test.id, # Needed to break the infinite loop in stub_test
-          metadata_provider_id: metadata_provider.id,
-          metadata_provider: metadata_provider,
+          annotation_provider_id: annotation_provider.id,
+          annotation_provider: annotation_provider,
           description: "The job passed.",
           url: "https://travis-ci.org/travis-ci/travis-ci/12345",
           image_url: nil,
@@ -201,9 +201,9 @@ module Travis
         )
       end
 
-      def stub_metadata_provider(attributes = {})
-        Stubs.stub 'metadata_provider', attributes.reverse_merge(
-          class: Stubs.stub('class', name: 'MetadataProvider'),
+      def stub_annotation_provider(attributes = {})
+        Stubs.stub 'annotation_provider', attributes.reverse_merge(
+          class: Stubs.stub('class', name: 'AnnotationProvider'),
           id: 1,
           name: "Travis CI",
           api_username: "travis-ci",

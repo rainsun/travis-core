@@ -40,8 +40,8 @@ describe Travis::Api::V2::Http::Job do
     }
   end
 
-  it "metadata" do
-    data["metadata"].should eq([{
+  it "annotations" do
+    data["annotations"].should eq([{
       "id" => 1,
       "job_id" => 1,
       "description" => "The job passed.",

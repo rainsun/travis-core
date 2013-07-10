@@ -51,14 +51,14 @@ describe Travis::Addons::Pusher::EventHandler do
       Travis::Event.dispatch('worker:added', worker)
     end
 
-    it "metadata:created" do
+    it "annotation:created" do
       subject.expects(:notify)
-      Travis::Event.dispatch("metadata:created", metadata)
+      Travis::Event.dispatch("annotation:created", annotation)
     end
 
-    it "metadata:updated" do
+    it "annotation:updated" do
       subject.expects(:notify)
-      Travis::Event.dispatch("metadata:updated", metadata)
+      Travis::Event.dispatch("annotation:updated", annotation)
     end
   end
 

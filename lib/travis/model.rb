@@ -4,31 +4,27 @@
 #   https://github.com/travis-ci/travis-hub/blob/master/lib/travis/hub/cli.rb#L15
 require 'core_ext/active_record/base'
 
-ActiveSupport::Inflector.inflections do |inflect|
-  inflect.uncountable "metadata"
-end
-
 module Travis
   module Model
-    autoload :Account,          'travis/model/account'
-    autoload :Broadcast,        'travis/model/broadcast'
-    autoload :Build,            'travis/model/build'
-    autoload :Commit,           'travis/model/commit'
-    autoload :Email,            'travis/model/email'
-    autoload :EncryptedColumn,  'travis/model/encrypted_column'
-    autoload :EnvHelpers,       'travis/model/env_helpers'
-    autoload :Job,              'travis/model/job'
-    autoload :Log,              'travis/model/log'
-    autoload :Membership,       'travis/model/membership'
-    autoload :Metadata,         'travis/model/metadata'
-    autoload :MetadataProvider, 'travis/model/metadata_provider'
-    autoload :Organization,     'travis/model/organization'
-    autoload :Permission,       'travis/model/permission'
-    autoload :Repository,       'travis/model/repository'
-    autoload :Request,          'travis/model/request'
-    autoload :SslKey,           'travis/model/ssl_key'
-    autoload :Token,            'travis/model/token'
-    autoload :User,             'travis/model/user'
-    autoload :Worker,           'travis/model/worker'
+    autoload :Account,            'travis/model/account'
+    autoload :Broadcast,          'travis/model/broadcast'
+    autoload :Build,              'travis/model/build'
+    autoload :Commit,             'travis/model/commit'
+    autoload :Email,              'travis/model/email'
+    autoload :EncryptedColumn,    'travis/model/encrypted_column'
+    autoload :EnvHelpers,         'travis/model/env_helpers'
+    autoload :Job,                'travis/model/job'
+    autoload :Log,                'travis/model/log'
+    autoload :Membership,         'travis/model/membership'
+    autoload :Annotation,         'travis/model/annotation'
+    autoload :AnnotationProvider, 'travis/model/annotation_provider'
+    autoload :Organization,       'travis/model/organization'
+    autoload :Permission,         'travis/model/permission'
+    autoload :Repository,         'travis/model/repository'
+    autoload :Request,            'travis/model/request'
+    autoload :SslKey,             'travis/model/ssl_key'
+    autoload :Token,              'travis/model/token'
+    autoload :User,               'travis/model/user'
+    autoload :Worker,             'travis/model/worker'
   end
 end

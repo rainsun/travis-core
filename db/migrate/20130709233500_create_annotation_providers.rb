@@ -1,6 +1,6 @@
-class CreateMetadataProviders < ActiveRecord::Migration
+class CreateAnnotationProviders < ActiveRecord::Migration
   def change
-    create_table :metadata_providers do |t|
+    create_table :annotation_providers do |t|
       t.string :name
       t.string :api_username
       t.string :api_key

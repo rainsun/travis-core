@@ -13,6 +13,25 @@
 
 ActiveRecord::Schema.define(:version => 20130710000745) do
 
+  create_table "annotation_providers", :force => true do |t|
+    t.string   "name"
+    t.string   "api_username"
+    t.string   "api_key"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "annotations", :force => true do |t|
+    t.integer  "job_id",                 :null => false
+    t.string   "url"
+    t.text     "description",            :null => false
+    t.string   "image_url"
+    t.string   "image_alt"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "annotation_provider_id", :null => false
+  end
+
   create_table "broadcasts", :force => true do |t|
     t.integer  "recipient_id"
     t.string   "recipient_type"
@@ -149,25 +168,6 @@ ActiveRecord::Schema.define(:version => 20130710000745) do
   create_table "memberships", :force => true do |t|
     t.integer "organization_id"
     t.integer "user_id"
-  end
-
-  create_table "metadata", :force => true do |t|
-    t.integer  "job_id",               :null => false
-    t.string   "url"
-    t.text     "description",          :null => false
-    t.string   "image_url"
-    t.string   "image_alt"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "metadata_provider_id", :null => false
-  end
-
-  create_table "metadata_providers", :force => true do |t|
-    t.string   "name"
-    t.string   "api_username"
-    t.string   "api_key"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "organizations", :force => true do |t|

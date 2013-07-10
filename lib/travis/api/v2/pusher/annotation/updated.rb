@@ -2,8 +2,8 @@ module Travis
   module Api
     module V2
       module Pusher
-        class Metadata
-          class Created < Metadata
+        class Annotation
+          class Updated < Annotation
           end
         end
       end

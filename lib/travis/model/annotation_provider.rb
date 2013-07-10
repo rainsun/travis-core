@@ -1,7 +1,7 @@
 require "active_record"
 
-class MetadataProvider < ActiveRecord::Base
-  has_many :metadata
+class AnnotationProvider < ActiveRecord::Base
+  has_many :annotations
 
   serialize :api_key, Travis::Model::EncryptedColumn.new
 
@@ -11,7 +11,7 @@ class MetadataProvider < ActiveRecord::Base
     provider && provider.api_key == key ? provider : nil
   end
 
-  def metadata_for_job(job_id)
-    metadata.where(job_id: job_id).first || metadata.build(job_id: job_id)
+  def annotation_for_job(job_id)
+    annotations.where(job_id: job_id).first || annotations.build(job_id: job_id)
   end
 end

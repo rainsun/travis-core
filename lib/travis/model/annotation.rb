@@ -1,10 +1,10 @@
 require "active_record"
 
-class Metadata < ActiveRecord::Base
+class Annotation < ActiveRecord::Base
   include Travis::Event
 
   belongs_to :job
-  belongs_to :metadata_provider
+  belongs_to :annotation_provider
 
   attr_accessible :description, :url, :job_id, :image_url, :image_alt
 

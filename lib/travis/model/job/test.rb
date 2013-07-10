@@ -47,7 +47,7 @@ class Job
       else
         build_log
       end
-      metadata.destroy_all
+      annotations.destroy_all
     end
 
     def cancelable?

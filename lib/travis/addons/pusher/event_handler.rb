@@ -10,7 +10,7 @@ module Travis
           /^build:(created|started|finished)/,
           /^job:test:(created|started|log|finished)/,
           /^worker:(added|updated|removed)/,
-          /^metadata:(created|updated)/,
+          /^annotation:(created|updated)/,
         ]
 
         attr_reader :channels

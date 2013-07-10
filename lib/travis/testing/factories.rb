@@ -117,14 +117,14 @@ FactoryGirl.define do
     finished_at { Time.now.utc }
   end
 
-  factory :metadata do
+  factory :annotation do
     url "https://travis-ci.org/travis-ci/travis-ci/jobs/12345"
     description "Job passed"
     job { Factory(:test) }
-    metadata_provider { Factory(:metadata_provider) }
+    annotation_provider { Factory(:annotation_provider) }
   end
 
-  factory :metadata_provider do
+  factory :annotation_provider do
     name "Travis CI"
     api_username "travis-ci"
     api_key "0123456789abcdef"

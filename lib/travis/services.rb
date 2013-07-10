@@ -12,7 +12,7 @@ module Travis
     autoload :FindJob,             'travis/services/find_job'
     autoload :FindJobs,            'travis/services/find_jobs'
     autoload :FindLog,             'travis/services/find_log'
-    autoload :FindMetadata,        'travis/services/find_metadata'
+    autoload :FindAnnotations,     'travis/services/find_annotations'
     autoload :FindRepo,            'travis/services/find_repo'
     autoload :FindRepos,           'travis/services/find_repos'
     autoload :FindRepoKey,         'travis/services/find_repo_key'
@@ -28,7 +28,7 @@ module Travis
     autoload :UpdateHook,          'travis/services/update_hook'
     autoload :UpdateJob,           'travis/services/update_job'
     autoload :UpdateLog,           'travis/services/update_log'
-    autoload :UpdateMetadata,      'travis/services/update_metadata'
+    autoload :UpdateAnnotation,    'travis/services/update_annotation'
     autoload :UpdateUser,          'travis/services/update_user'
     autoload :UpdateWorkers,       'travis/services/update_workers'
 

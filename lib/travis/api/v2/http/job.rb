@@ -16,7 +16,7 @@ module Travis
             {
               'job' => job_data(job),
               'commit' => commit_data(job.commit),
-              'metadata' => Metadata.new(job.metadata, @options).data["metadata"],
+              'annotations' => Annotations.new(job.annotations, @options).data["annotations"],
             }
           end
 

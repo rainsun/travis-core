@@ -12,7 +12,7 @@ module Travis
         autoload :Job,          'travis/api/v2/http/job'
         autoload :Jobs,         'travis/api/v2/http/jobs'
         autoload :Log,          'travis/api/v2/http/log'
-        autoload :Metadata,     'travis/api/v2/http/metadata'
+        autoload :Annotations,  'travis/api/v2/http/annotations'
         autoload :Permissions,  'travis/api/v2/http/permissions'
         autoload :Repositories, 'travis/api/v2/http/repositories'
         autoload :Repository,   'travis/api/v2/http/repository'
