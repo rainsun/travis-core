@@ -47,6 +47,7 @@ describe Travis::Api::V2::Http::Job do
       "description" => "The job passed.",
       "url" => "https://travis-ci.org/travis-ci/travis-ci/12345",
       "image" => nil,
+      "provider_name" => "Travis CI",
     }])
   end
 

@@ -24,6 +24,7 @@ module Travis
               "description" => metadata.description,
               "url" => metadata.url,
               "image" => build_image(metadata),
+              "provider_name" => metadata.metadata_provider.name,
             }
           end
 

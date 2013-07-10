@@ -12,6 +12,7 @@ describe Travis::Api::V2::Http::Metadata do
       "description" => metadata.description,
       "url" => metadata.url,
       "image" => nil,
+      "provider_name" => "Travis CI",
     })
   end
 
