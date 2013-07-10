@@ -144,6 +144,7 @@ module Travis
           commit: commit,
           log: log,
           log_id: log.id,
+          metadata: [stub_metadata(job_id: 1)],
           number: '2.1',
           config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
           decrypted_config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
@@ -190,7 +191,7 @@ module Travis
         Stubs.stub 'metadata', attributes.reverse_merge(
           class: Stubs.stub('class', name: 'Metadata'),
           id: 1,
-          job_id: test.id,
+          job_id: attributes[:job_id] || test.id, # Needed to break the infinite loop in stub_test
           metadata_provider_id: metadata_provider.id,
           description: "The job passed.",
           url: "https://travis-ci.org/travis-ci/travis-ci/12345",

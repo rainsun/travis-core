@@ -40,6 +40,16 @@ describe Travis::Api::V2::Http::Job do
     }
   end
 
+  it "metadata" do
+    data["metadata"].should eq([{
+      "id" => 1,
+      "job_id" => 1,
+      "description" => "The job passed.",
+      "url" => "https://travis-ci.org/travis-ci/travis-ci/12345",
+      "image" => nil,
+    }])
+  end
+
   context 'with encrypted env vars' do
     let(:test) do
       stub_test(:obfuscated_config => { 'env' => 'FOO=[secure]' })
@@ -59,6 +69,6 @@ describe 'Travis::Api::V2::Http::Job using Travis::Services::Jobs::FindOne' do
   let(:data)    { Travis::Api::V2::Http::Job.new(job).data }
 
   it 'queries' do
-    lambda { data }.should issue_queries(4)
+    lambda { data }.should issue_queries(8)
   end
 end
