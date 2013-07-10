@@ -36,4 +36,15 @@ describe Travis::Services::UpdateMetadata do
     metadata = Factory(:metadata, metadata_provider: metadata_provider, job: job)
     service.run.id.should eq(metadata.id)
   end
+
+  it "returns nil when given invalid provider credentials" do
+    @params = {
+      username: "some-invalid-provider",
+      key: "some-invalid-key",
+      job_id: job.id,
+      description: "Foo bar baz",
+    }
+
+    service.run.should be_nil
+  end
 end

@@ -4,9 +4,11 @@ module Travis
       register :update_metadata
 
       def run
-        metadata.update_attributes!(attributes)
+        if metadata_provider
+          metadata.update_attributes!(attributes)
 
-        metadata
+          metadata
+        end
       end
 
       private
