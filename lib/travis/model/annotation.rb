@@ -1,4 +1,5 @@
 require "active_record"
+require "addressable/uri"
 
 class Annotation < ActiveRecord::Base
   include Travis::Event
@@ -10,7 +11,19 @@ class Annotation < ActiveRecord::Base
 
   validates :job_id, presence: true
   validates :description, presence: true
+  validate :validate_url_scheme
 
   after_create { notify(:create) }
   after_update { notify(:update) }
+
+  def validate_url_scheme
+    return unless self.url
+
+    uri = Addressable::URI.parse(self.url)
+    unless %w[http https].include?(uri.scheme)
+      errors.add(:url, "URL must use http or https scheme")
+    end
+  rescue Addressable::URI::InvalidURIError
+    errors.add(:url, "URL is invalid")
+  end
 end
