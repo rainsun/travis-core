@@ -20,7 +20,8 @@ describe Travis::Api::V2::Http::Job do
       'config' => { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
       'queue' => 'builds.linux',
       'allow_failure' => false,
-      'tags' => 'tag-a,tag-b'
+      'tags' => 'tag-a,tag-b',
+      'annotation_ids' => [1],
     }
   end
 
@@ -70,6 +71,6 @@ describe 'Travis::Api::V2::Http::Job using Travis::Services::Jobs::FindOne' do
   let(:data)    { Travis::Api::V2::Http::Job.new(job).data }
 
   it 'queries' do
-    lambda { data }.should issue_queries(8)
+    lambda { data }.should issue_queries(9)
   end
 end

@@ -145,6 +145,7 @@ module Travis
           log: log,
           log_id: log.id,
           annotations: [stub_annotation(job_id: 1)],
+          annotation_ids: [1],
           number: '2.1',
           config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
           decrypted_config: { 'rvm' => '1.8.7', 'gemfile' => 'test/Gemfile.rails-2.3.x' },
