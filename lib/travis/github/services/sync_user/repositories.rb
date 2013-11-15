@@ -41,7 +41,7 @@ module Travis
 
             def create_or_update
               data.map do |repository|
-                Repository.new(user, repository).run
+                Repository.new(user, repository, fetch_hooks(repository)).run
               end
             end
 
@@ -82,6 +82,10 @@ module Travis
 
             def slugs
               @slugs ||= data.map { |repo| "#{repo['owner']['login']}/#{repo['name']}" }
+            end
+
+            def fetch_hooks(repository)
+              fetch_resource("/repos/#{repository['owner']['login']}/#{repository['name']}/hooks").to_a
             end
 
             def fetch

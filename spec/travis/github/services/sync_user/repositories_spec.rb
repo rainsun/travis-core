@@ -18,8 +18,13 @@ describe Travis::Github::Services::SyncUser::Repositories do
     { 'name' => 'private', 'owner' => { 'login' => 'sven' }, 'permissions' => { 'admin' => true }, 'private' => true }
   ] }
 
+  let(:hooks) { [
+    { 'name' => 'travis', 'active' => true }
+  ] }
+
   before :each do
-    GH.stubs(:[]).returns(repos)
+    GH.stubs(:[]).with(regexp_matches(/(?!hooks)$/)).returns(repos)
+    GH.stubs(:[]).with(regexp_matches(/hooks$/)).returns(hooks)
     repository.stubs(:new).returns(stub('repo', :run => public_repo))
     repository.stubs(:unpermit_all)
     @type = described_class.type
@@ -45,12 +50,12 @@ describe Travis::Github::Services::SyncUser::Repositories do
     end
 
     it 'synchronizes each of the public repositories' do
-      repository.expects(:new).with(user, repos.first).once.returns(stub('repo', :run => public_repo))
+      repository.expects(:new).with(user, repos.first, hooks).once.returns(stub('repo', :run => public_repo))
       sync.run
     end
 
     it 'does not synchronize private repositories' do
-      repository.expects(:new).with(user, repos.last).never
+      repository.expects(:new).with(user, repos.last, hooks).never
       sync.run
     end
   end
@@ -61,12 +66,12 @@ describe Travis::Github::Services::SyncUser::Repositories do
     end
 
     it 'synchronizes each of the private repositories' do
-      repository.expects(:new).with(user, repos.last).once.returns(stub('repo', :run => private_repo))
+      repository.expects(:new).with(user, repos.last, hooks).once.returns(stub('repo', :run => private_repo))
       sync.run
     end
 
     it 'does not synchronize public repositories' do
-      repository.expects(:new).with(user, repos.first).never
+      repository.expects(:new).with(user, repos.first, hooks).never
       sync.run
     end
   end

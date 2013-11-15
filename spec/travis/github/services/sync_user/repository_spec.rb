@@ -4,7 +4,8 @@ describe Travis::Github::Services::SyncUser::Repository do
   include Support::ActiveRecord
 
   let(:user)    { Factory(:user) }
-  let(:run)     { lambda { described_class.new(user, repo).run } }
+  let(:hooks)   { [ { 'name' => 'travis', 'active' => true } ] }
+  let(:run)     { lambda { described_class.new(user, repo, hooks).run } }
 
   describe 'find or create repository' do
     let(:repo) { { 'id' => 100, 'name' => 'minimal', 'owner' => { 'login' => 'sven' }, 'permissions' => { 'admin' => false, 'push' => false, 'pull' => true } } }
@@ -28,6 +29,13 @@ describe Travis::Github::Services::SyncUser::Repository do
 
       r.owner_name.should == 'sven'
       r.name.should == 'minimal'
+    end
+
+    it "updates the hook status of the repository" do
+      r = Repository.create!(:owner_name => 'sven-1', :name => 'minimal-2', :github_id => 100, :active => false)
+      run.should change { r.reload.active }
+
+      r.active.should be_true
     end
   end
 

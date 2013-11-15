@@ -9,11 +9,12 @@ module Travis
             end
           end
 
-          attr_reader :user, :data, :repo
+          attr_reader :user, :data, :repo, :hooks
 
-          def initialize(user, data)
+          def initialize(user, data, hooks)
             @user = user
             @data = data
+            @hooks = hooks
           end
 
           def run
@@ -71,7 +72,8 @@ module Travis
                 default_branch: data['default_branch'],
                 github_language: data['language'],
                 name: name,
-                owner_name: owner_name
+                owner_name: owner_name,
+                active: hook_active?
               })
             rescue ActiveRecord::RecordInvalid
               # ignore for now. this seems to happen when multiple syncs (i.e. user sign
@@ -102,6 +104,10 @@ module Travis
 
             def admin_access?
               permission_data['admin']
+            end
+
+            def hook_active?
+              hooks.select { |hook| hook['name'] == 'travis' }.any? { |hook| hook['active'] }
             end
         end
       end
