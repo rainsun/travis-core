@@ -85,7 +85,7 @@ module Travis
             end
 
             def fetch_hooks(repository)
-              fetch_resource("/repos/#{repository['owner']['login']}/#{repository['name']}/hooks").to_a
+              fetch_resource("/repositories/#{repository['id']}/hooks").to_a
             end
 
             def fetch
