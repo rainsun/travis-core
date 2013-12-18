@@ -7,7 +7,7 @@ class Build
       def initialize(build)
         @build  = build
         if build.config
-          @config = build.config.dup
+          @config = build.config
         else
           @config = {}
         end
