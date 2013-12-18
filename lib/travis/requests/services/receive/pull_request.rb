@@ -1,4 +1,5 @@
 require 'travis/requests/services/receive/settings_support'
+require 'travis/services/base'
 
 module Travis
   module Requests

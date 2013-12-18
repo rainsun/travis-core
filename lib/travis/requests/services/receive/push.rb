@@ -1,4 +1,6 @@
+require 'travis/commit_command'
 require 'travis/requests/services/receive/settings_support'
+require 'travis/services/base'
 
 module Travis
   module Requests
@@ -6,6 +8,7 @@ module Travis
       class Receive < Travis::Services::Base
         class Push
           include SettingsSupport
+
           attr_reader :event
 
           def initialize(event)

@@ -1,3 +1,5 @@
+require 'travis/event/secure_config'
+
 module Travis
   module Event
     class Config

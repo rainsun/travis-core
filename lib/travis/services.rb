@@ -1,42 +1,3 @@
-module Travis
-  module Services
-    module Registry
-      def add(key, const = nil)
-        if key.is_a?(Hash)
-          key.each { |key, const| add(key, const) }
-        else
-          services[key.to_sym] = const
-        end
-      end
-
-      def [](key)
-        services[key.to_sym] || raise("can not use unregistered service #{key}. known services are: #{services.keys.inspect}")
-      end
-
-      private
-
-        def services
-          @services ||= {}
-        end
-    end
-
-    extend Registry
-
-    class << self
-      def register
-        constants(false).each { |name| const_get(name) }
-      end
-    end
-  end
-end
-
-require 'travis/services/helpers'
-
-module Travis
-  extend Services::Helpers
-end
-
-require 'travis/services/base'
 require 'travis/services/cancel_job'
 require 'travis/services/cancel_build'
 require 'travis/services/delete_caches'
@@ -61,7 +22,8 @@ require 'travis/services/find_user_broadcasts'
 require 'travis/services/find_user_permissions'
 require 'travis/services/regenerate_repo_key'
 require 'travis/services/reset_model'
-require 'travis/services/sync_user_'     # TODO wtf, y u no load this file if named properly
+require 'travis/services/sync_user'
 require 'travis/services/update_hook'
 require 'travis/services/update_job'
+require 'travis/services/update_log'
 require 'travis/services/update_user'

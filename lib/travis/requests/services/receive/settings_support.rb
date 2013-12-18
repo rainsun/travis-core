@@ -1,3 +1,7 @@
+require 'travis/model/repository/settings'
+require 'travis/services/base'
+require 'travis/services/helpers'
+
 module Travis
   module Requests
     module Services

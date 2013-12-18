@@ -4,7 +4,6 @@ module Travis
       module Pusher
         require 'travis/api/v0/pusher/build'
         require 'travis/api/v0/pusher/job'
-        require 'travis/api/v0/pusher/worker'
       end
     end
   end
