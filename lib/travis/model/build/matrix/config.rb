@@ -11,6 +11,7 @@ class Build
         else
           @config = {}
         end
+        remove_superfluous_config_keys
       end
 
       def keys
@@ -53,7 +54,6 @@ class Build
       end
 
       def expand
-        remove_superfluous_config_keys
 
         # recursively builds up permutations of values in the rows of a nested array
         matrix = lambda do |*args|
