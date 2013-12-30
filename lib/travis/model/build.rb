@@ -158,6 +158,15 @@ class Build < Travis::Model
     expand_matrix
   end
 
+  after_create do
+    if ActiveRecord::Base.connection.table_exists? 'branches'
+      add_branch(commit.branch) if commit.branch && !commit.tag_name
+    end
+    if ActiveRecord::Base.connection.table_exists? 'tags'
+      add_tag(commit.tag_name) if commit.tag_name
+    end
+  end
+
   after_save do
     unless cached_matrix_ids
       update_column(:cached_matrix_ids, to_postgres_array(matrix_ids))
@@ -259,6 +268,30 @@ class Build < Travis::Model
     branch == repository.default_branch
   end
 
+  def add_branch(branch_name)
+    retry_on(ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid) do
+      branch = repository.branches.where(name: branch_name).first
+      if branch
+        branches.push branch unless branches.include?(branch)
+        branch
+      else
+        branches.create!(name: branch_name, repository_id: repository_id)
+      end
+    end
+  end
+
+   def add_tag(tag_name)
+    retry_on(ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid) do
+      tag = repository.tags.where(name: tag_name).first
+      if tag
+        tags.push tag unless tags.include?(tag)
+        tag
+      else
+        tags.create!(name: tag_name, repository_id: repository_id)
+      end
+    end
+  end
+
   private
 
     def normalize_env_values(values)
@@ -307,6 +340,16 @@ class Build < Travis::Model
       ids = ids.compact.uniq
       unless ids.empty?
         "{#{ids.map { |id| id.to_i.to_s }.join(',')}}"
+      end
+    end
+
+    def retry_on(*errors)
+      times = 0
+      begin
+        yield
+      rescue *errors
+        times += 1
+        times < 3 ? retry : raise
       end
     end
 end
